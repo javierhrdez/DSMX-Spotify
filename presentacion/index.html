@@ -1,0 +1,640 @@
+
+<html>
+  <head>
+    <title>Javier Hernández - DSMX</title>
+    <link rel="stylesheet" href="css/reveal.css">
+    <!--link rel="stylesheet" href="css/theme/white.css"-->
+    <!--link rel="stylesheet" href="css/theme/black.css"-->
+    <link rel="stylesheet" href="css/theme/night.css">
+    <!--link rel="stylesheet" href="css/theme/white.css"-->
+    
+    <link rel="stylesheet" href="css/custom.css">
+
+    <!-- Highlight.js -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/styles/default.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/styles/atom-one-dark.min.css">
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section data-background="https://media.giphy.com/media/unlps5vxeNdKM/giphy.gif">
+          <h2 style="line-height: 1em">
+            ¿Cómo es la música que escuchan los mexicanos?
+          </h2>
+          <p>
+            Ciencia de datos aplicada a la música.
+          </p>
+
+          <small>
+            <p>
+            Código fuente <a href="https://github.com/ActivityWatch/activitywatch">GitHub</a>
+
+            <br>
+
+            <small>
+                Presentación disponible <a href="https://github.com/javierhrdez">https://github.com/javierhrdez</a>
+            </small>
+            </p>
+          </small>
+
+        </section>
+
+        <section class="left-align">
+          <h3>
+            Fuentes de Música
+          </h3>
+
+          <ul>
+            <li> Spotify: 35 millones de canciones
+            <li> Google Play Music: 40 millones de canciones
+            <li> Apple Music: 45 millones de canciones
+            <li> Youtube Music: 50 millones de canciones
+            <li> Deezer: 53 millones de canciones
+          </ul>
+        </section>
+
+
+
+
+          <section>
+            <h3>
+              Scraping Datos
+            </h3>
+
+            <p>
+              <small>
+                Extracción de datos desde la web.
+              </small>
+            </p>
+
+            <ul>
+              <li> https://spotifycharts.com/ 
+
+                <div>
+                  <small>
+                    <minor>Top 200 canciones por días</minor>
+                  </small>
+                </div>
+
+              <li> https://developer.spotify.com/documentation/web-api/
+                <div>
+                <small>
+                  <minor>API Oficial Spotify</minor>
+                </small>
+                </div>
+
+                <li> https://genius.com/
+                  <div>
+                    <small>
+                      <minor>Letras de canciones</minor>
+                    </small>
+                  </div>                
+
+              <li> https://docs.genius.com/
+                <div>
+                  <small>
+                    <minor>Documentación API Genius</minor>
+                  </small>
+                </div>                
+
+
+
+          </section>
+
+
+          <section>
+              <h3> Construcción Base de datos</h3>
+  
+              <ul>
+                <li>www.spotifycharts.com
+                <ul>
+                  <li>Top 200 MX desde enero 2017
+                  <li>157600 registros
+                </ul>
+                <li>Genius API
+                  <ul>
+                    <li>Catálogo 112508 canciones 
+                  </ul>
+                <li>Match Spotify API v/s Genius API
+                    <ul>
+                      <li>Distancia de Jaccard
+                    </ul>
+                <li>Extracción letras GENIUS API
+
+              </ul>
+          </section>
+
+
+
+
+
+
+
+        <section>
+          <h3>
+            Datos Spotify - Audio Features
+          </h3>
+        </section>
+
+
+
+
+
+        <section>
+          <section>
+              <h3>
+                Popularidad
+              </h3>
+    
+              <ul>
+                <li> Popularidad del track. 
+                <li> Valor entre 0 y 100, donde 100 es el más popular.
+                <li> La popularidad se calcula por un algoritmo y se basa, en su mayor parte, en el número total de reproducciones que ha tenido el track y en la antigüedad de esas reproducciones.
+                <!--
+                <br><minor>served us good but has some downsides</minor>
+              <li> Core library has good test coverage (&gt;80%)
+                <br><minor>and is typechecked using mypy</minor>
+              -->
+            </ul>
+          </section>
+          <section data-background="#ffffff">
+            <h5 style="color:black;">Los 10 más populares</h5>
+            <img src="images/popularidad.png" style="width:80%"/>
+          </section>
+      </section>
+
+
+      <section>
+          <section>
+              <h3>
+                Danceability
+              </h3>
+    
+              <ul>
+                <li> 	Describe qué tan adecuada es el track para bailar basada en una combinación de elementos musicales que incluyen el tempo, la estabilidad del ritmo, la fuerza del ritmo y la regularidad general.
+                    
+                <li> Un valor 0.0 es menos bailable , y 1.0 el más bailable.
+                <!--
+                <br><minor>served us good but has some downsides</minor>
+              <li> Core library has good test coverage (&gt;80%)
+                <br><minor>and is typechecked using mypy</minor>
+              -->
+            </ul>
+          </section>
+          <section data-background="#ffffff">
+            <h5 style="color:black;">Los más y menos bailables</h5>
+            <img src="images/bailabilidad.png" style="width:80%"/>
+          </section>
+
+
+      </section>
+
+
+
+      <section>
+          <section>
+              <h3>
+                Acousticness
+              </h3>
+    
+              <ul>
+                <li> Una medida de confianza de 0.0 a 1.0 de si el track es acústica.
+                <li> 1.0 representa alta confianza en el track es acústico. 
+                <!--
+                <br><minor>served us good but has some downsides</minor>
+              <li> Core library has good test coverage (&gt;80%)
+                <br><minor>and is typechecked using mypy</minor>
+              -->
+            </ul>
+          </section>
+          <section data-background="#ffffff">
+            <h5 style="color:black;">Los 10 más acústicas</h5>
+            <img src="images/mas_acustico.png" style="width:80%"/>
+          </section>
+
+          <section data-background="#ffffff">
+              <h5 style="color:black;">Los 10 menos acústicas</h5>
+              <img src="images/menos_acustico.png" style="width:60%"/>
+            </section>
+      </section>
+
+
+      <section>
+          <section>
+              <h3>
+                  duration_ms
+              </h3>
+    
+              <ul>
+                <li>Duración del track en milisegundos.
+                <!--
+                <br><minor>served us good but has some downsides</minor>
+              <li> Core library has good test coverage (&gt;80%)
+                <br><minor>and is typechecked using mypy</minor>
+              -->
+            </ul>
+          </section>
+          <section data-background="#ffffff">
+            <h5 style="color:black;">Las más largas y cortas</h5>
+            <img src="images/duracion.png" style="width: 80%"/>
+          </section>
+
+
+      </section>
+
+      <section>
+          <section>
+              <h3>
+                  Energy
+              </h3>
+    
+              <ul>
+                <li>	La energía es una medida de 0.0 a 1.0 y representa una medida perceptiva de intensidad y actividad. 
+                <li>  Los track energéticos se sienten rápidas, ruidosas.
+                <li>  Por ejemplo, el death metal tiene mucha energía, mientras que un preludio de Bach tiene un puntaje bajo en la escala
+               <!--
+                <br><minor>served us good but has some downsides</minor>
+              <li> Core library has good test coverage (&gt;80%)
+                <br><minor>and is typechecked using mypy</minor>
+              -->
+            </ul>
+          </section>
+          <section data-background="#ffffff">
+            <h5 style="color:black;">Las más y menos energéticas</h5>
+            <img src="images/energia.png" style="width:80%"/>
+          </section>
+
+
+      </section>
+
+      <section>
+          <section>
+              <h3>
+                  Liveness
+              </h3>
+    
+              <ul>
+                <li>	Detecta la presencia de audiencia en la grabación.
+                <li>  Valores altos incremntan la probabilidad que el track haya sido grabado en vivo. 
+              <!--
+                <br><minor>served us good but has some downsides</minor>
+              <li> Core library has good test coverage (&gt;80%)
+                <br><minor>and is typechecked using mypy</minor>
+              -->
+            </ul>
+          </section>
+          <section data-background="#ffffff">
+            <h5 style="color:black;">Las 10 más ...</h5>
+            <img src="images/liveness.png" style="width: 80%"/>
+          </section>
+
+      </section>
+
+
+      <section>
+          <section>
+              <h3>
+                  Speechiness
+              </h3>
+    
+              <ul>
+                <li>	Speechiness detecta la presencia de palabras habladas en una pista.
+                <li>  Cuanto más  similar a un discurso (por ejemplo, un programa de entrevistas, audiolibro, poesía), más cerca del valor de atributo será 1.0.
+                <li>   Los valores superiores a 0,66 describen tracks que probablemente están formados en su totalidad por palabras habladas.
+                <li>   Los valores entre 0,33 y 0,66 describen tracks que pueden contener música y voz, por ej: la música rap.
+              <!--
+                <br><minor>served us good but has some downsides</minor>
+              <li> Core library has good test coverage (&gt;80%)
+                <br><minor>and is typechecked using mypy</minor>
+              -->
+            </ul>
+          </section>
+          <section data-background="#ffffff">
+            <h5 style="color:black;">Las más y menos...</h5>
+            <img src="images/speechiness.png" style="width: 80%"/>
+          </section>
+
+
+      </section>
+
+
+      <section>
+          <section>
+              <h3>
+                  Valence
+              </h3>
+    
+              <ul>
+                <li>	Una medida de 0.0 a 1.0 que describe la positividad musical transmitida por una pista.
+                <li>  Los tracks  con alts valores suenan más positivos (por ejemplo, felices, alegres, eufóricos), mientras que con baja valor suenan más negativos (por ejemplo, tristes, deprimidas, enojadas).
+              <!--
+                <br><minor>served us good but has some downsides</minor>
+              <li> Core library has good test coverage (&gt;80%)
+                <br><minor>and is typechecked using mypy</minor>
+              -->
+            </ul>
+          </section>
+          <section data-background="#ffffff">
+            <h5 style="color:black;">Las más positivas y negativas</h5>
+            <img src="images/valence.png" style="width: 80%"/>
+          </section>
+
+
+          <section>
+              <h3>
+                  Valence
+              </h3>
+    
+              <ul>
+                <li>	¿Música como métrica de estado de ánimo?.
+            </ul>
+          </section>
+          <section data-background="#ffffff">
+            <h5 style="color:black;">valence</h5>
+            <img src="images/positividad0.png" style="width: 80%"/>
+          </section>
+
+          <section data-background="#ffffff">
+            <h5 style="color:black;">valence</h5>
+            <img src="images/calendario_valence.png" style="width: 80%"/>
+          </section>
+
+      </section>
+
+
+
+
+
+      <section data-background="#ffffff">
+          <h5 style="color:black;">Top 20 géneros</h5>
+          <img src="images/top_20_generos.png" style="width: 100%"/>
+      </section>
+
+      <section>
+          <h3>
+              Text Mining
+          </h3>
+        </section>   
+
+
+      <section>
+        <section data-background="#ffffff">
+            <h5 style="color:black;">Top 20 palabras</h5>
+            <img src="images/top_20_palabras.png" style="width: 100%"/>
+        </section>
+        <section data-background="#ffffff">
+            <h5 style="color:black;">Top 20 palabras pop</h5>
+            <img src="images/top_20_palabras_pop.png" style="width: 100%"/>
+        </section>
+        <section data-background="#ffffff">
+            <h5 style="color:black;">Top 20 palabras latin</h5>
+            <img src="images/top_20_palabras_latin.png" style="width: 100%"/>
+        </section>
+        <section data-background="#ffffff">
+            <h5 style="color:black;">Top 20 palabras dance pop</h5>
+            <img src="images/top_20_palabras_dancepop.png" style="width: 100%"/>
+        </section>
+
+        <section data-background="#ffffff">
+            <h5 style="color:black;">Top 20 palabras latin pop</h5>
+            <img src="images/top_20_palabras_latinpop.png" style="width: 100%"/>
+        </section> 
+  
+        
+
+        <section data-background="#ffffff">
+            <h5 style="color:black;">Top 20 palabras reggaeton</h5>
+            <img src="images/top_20_palabras_reggaeton.png" style="width: 100%"/>
+        </section>            
+
+    </section>
+
+ 
+    
+    <section data-background="#ffffff">
+        <h5 style="color:black;">Densidad Lírica</h5>
+        <img src="images/densidad_lirica.png" style="width: 100%"/>
+      </section>
+  
+      <section data-background="#ffffff">
+        <h5 style="color:black;">Densidad Léxica</h5>
+        <img src="images/densidad_lexica.png" style="width: 100%"/>
+      </section>
+
+
+    <section data-background="#ffffff">
+      <h3 style="color: #000;">
+          Selección de Tópicos
+      </h3>
+    <div class = "stretch">
+        <!--iframe width="100%" height="100%" src="http://localhost:8000/lda.html"></iframe-->
+        <iframe frameborder=0 width="100%" height="100%" marginheight=0 marginwidth=0 scrolling=no src="http://localhost:8000/lda.html"></iframe>
+
+    </div>
+   </section>
+
+
+   <section>
+
+      <section data-background="#ffffff">
+        <h3 style="color: #000;">
+          Curiosidades
+        </h3>
+        <img src="https://media.giphy.com/media/8lQyyys3SGBoUUxrUp/giphy.gif" style="width: 60%;"/>
+      </section>
+
+      <section data-background="#ffffff">
+        <h5 style="color:black;">Queen</h5>
+        <img src="images/queen.png" style="width: 100%"/>
+      </section>
+
+      <section data-background="#ffffff">
+          <h5 style="color:black;">¿Muertes?</h5>
+          <img src="images/cranberries.png" style="width: 100%"/>
+      </section>
+      
+      <section data-background="#ffffff">
+          <h5 style="color:black;">Juan Gabriel</h5>
+          <img src="images/juanga.png" style="width: 100%"/>
+      </section> 
+   </section>
+
+
+
+
+
+   <section data-background="#ffffff">
+      <section>
+        <h3 style="color: #000;">
+          Conclusiones
+        </h3>
+
+        <div style="float: right; width: 70%">
+          <a href="">
+            <img src="images/resumen.png"/>
+          </a>
+        </div>
+        <div style="width: 30%;font-size:16px;color: #000; ">
+          <ul>
+            <li> Música no acústica (0.251427)
+            <li> Predominante bailable (0.662088)
+            <li> Muy energética (0.656771)
+            <li> instrumentalness (0.013326)
+            <li> liveness (0.013326)
+            <li> speachness (0.084534)
+            <li> valence (0.563164)
+            <li> La música reacciona a las emociones.
+          </ul>
+        </div>
+      </section>
+
+      <section >
+          <img src="images/resumen.png" style="width: 100%"/>
+      </section>
+    </section>   
+
+    <section>
+        <h3>
+          Trabajos Futuros
+        </h3>
+
+        <ul>
+          <li> <b>Análisis de párametro "valence"</b>
+            <ul>
+              <li>Conocer el estado de ánimo 
+              <li>2 años de datos.
+            </ul>
+          <li> <b>Aplicación Web</b>
+            <ul>
+              <li>Conocer la música que escuchamos
+            </ul>
+            <li> <b>Relacionar "valence" con letras</b>
+              <ul>
+                <li>Saber qué palabras generan canciones postivas o negativas.
+              </ul>
+        </ul>
+      </section>
+        <section>
+          <h3>
+            Preguntas
+          </h3>
+          <img src="https://media.giphy.com/media/l2SqdEySxgqMhWqsg/giphy.gif" style="width: 15em"/>
+
+        </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      </div>
+
+    </div>
+    <script src="js/reveal.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script>
+      Reveal.initialize({
+        // Display controls in the bottom right corner
+        controls: true,
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Vertical centering of slides
+        center: true,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: Reveal.navigateNext,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // Hides the address bar on mobile devices
+        hideAddressBar: true,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+        // Transition speed
+        transitionSpeed: 'default', // default/fast/slow
+
+        // Transition style for full page slide backgrounds
+        backgroundTransition: 'fade', // none/fade/slide/convex/concave/zoom
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Parallax background image
+        parallaxBackgroundImage: '', // e.g. "'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg'"
+
+        // Parallax background size
+        parallaxBackgroundSize: '', // CSS syntax, e.g. "2100px 900px"
+
+        // Number of pixels to move the parallax background per slide
+        // - Calculated automatically unless specified
+        // - Set to 0 to disable movement along an axis
+        parallaxBackgroundHorizontal: null,
+        parallaxBackgroundVertical: null
+
+      });
+    </script>
+  </body>
+</html>
