@@ -11,7 +11,7 @@ import pandas as pd
 from colorama import init, Fore, Back, Style
 init()
 
-TOKEN = '4VxBnGpiY6jTRAPPqfBuibNBufeGmOAqn5_RyDbsLWMaNg4H9okxe14NEn5iah1T'
+TOKEN = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx'
 
 print(Fore.RED + 'some red text')
 print(Back.GREEN + 'and with a green background')
